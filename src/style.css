@@ -1,31 +1,114 @@
-div {
-    border: 1px solid red;
-    margin: 10px;
-    padding: 5px;
+@font-face {
+    font-family: Rubik;
+    src: url('./font/Rubik-VariableFont_wght.ttf');
+}
+body, button, #city {
+    font-family: Rubik;
+}
+body {
+    font-size: x-large;
+    color: white;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('./images/weather-background.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    padding: 1rem;
+    margin: 0;
+    width: 95%;
+    height: 95%;
 }
 
 .currentWeather {
+    margin: 0;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    height: 100%;
+}
+
+.leftSidebar {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+.rightSidebar {
+    display: flex;
     align-items: center;
 }
 
-.hourlyView ul, .dailyView ul{
-    max-width: 100%;
+.weatherInput, .importantInfo, .otherInfo {
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.2); 
+    border-radius: 1rem;
+}
+.weatherInput, .importantInfo, .otherInfo, .weatherInputUpper input, .weatherInput button {
+    border: 2px solid rgba(0, 0, 0, 0.4);
+}
+.weatherInput {
+    height: 40%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+}
+.weatherInputUpper input, .weatherInput button {
+    color: white;
+    padding: 10px;
+    font-size: x-large;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 1rem;
+}
+.weatherInput button:hover {
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.6);
+    border: 2px solid white;
+}
+.weatherInput button:active {
+    border: 2px solid black;
+    color: white;
+}
+.weatherInputLower button {
+    color: black;
     display: flex;
     flex-direction: row;
-    list-style-type: none;
-    gap: 20px;
+    height: 3rem;
+    width: 7rem;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+
 }
-.hourlyView ul {
-    justify-content: flex-start;
-    overflow: scroll;
-}
-.dailyView ul {
-    justify-content: space-evenly;
-}
-.hourlyView li, .dailyView li {
-    padding: 10px;
+.weatherInputLower button .active {
+    font-size: xxx-large;
+    color: white;
 }
 
+.importantInfo img, .otherInfo img {
+    height: 2rem;
+    width: 2rem;
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(82deg) brightness(103%) contrast(103%);;
+}
+.importantInfo div, .otherInfo div {
+    display: flex;
+    align-items: center;
+}
+.importantInfo {
+    height: 50%;
+}
+.importantInfo p, .otherInfo p {
+    margin: 1rem;
+}
+.importantInfo #cityName {
+    font-weight: 600;
+    font-size: xx-large;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}

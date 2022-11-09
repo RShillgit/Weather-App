@@ -6,15 +6,31 @@ import { getApiCelsius } from './apiLoad';
 // Elements
 const cityInput = document.getElementById('city');
 const searchButton = document.getElementById('search');
+const unitSwitchButton = document.getElementById('FC');
+const fBtn = document.querySelector('.F');
+const cBtn = document.querySelector('.C');
 
-// TODO handle api fetch errors
-// TODO create slider button that toggles between fahrenheit and celsius
-// Only function that would need to change is the display other because the units would be different
+// Initially Set fahrenheit to True
+let fahrenheit = true;
+
+// Initially set currentCity to London
+let currentCity = 'London';
+
+// TODO Dynamic weather logo 
+// TODO SVG icons
+
+// Initially load London's weather
+function initialLoad() {
+    // Set Fahrenheit button to active
+    fBtn.classList.toggle('active');
+    return getApiFahrenheit(currentCity);
+}
+initialLoad();
 
 function getWeather() {
 
     // Search event listener
-    searchButton.addEventListener('click', () => {
+    searchButton.addEventListener('click', async () => {
 
         // No input handler
         if (cityInput.validity.valueMissing) {
@@ -24,10 +40,39 @@ function getWeather() {
         else {
             cityInput.setCustomValidity("");
 
+            // City the user requested
             const requestedCity = cityInput.value;
-            return getApiFahrenheit(requestedCity);
+
+            const searchForCity = await getApiFahrenheit(requestedCity);
+
+            // Change current city
+            currentCity = requestedCity;
         }
     });
 };
 getWeather();
 
+function switchUnits() {
+
+    // Unit Switch event listener
+    unitSwitchButton.addEventListener('click', () => {
+
+        // Switch Unit
+        fahrenheit = !fahrenheit;
+
+        // Toggle active class
+        fBtn.classList.toggle('active');
+        cBtn.classList.toggle('active');
+
+        // If fahrenheit is now true
+        if (fahrenheit == true) {
+            return getApiFahrenheit(currentCity);
+        }
+        // Else if it is now false
+        else {
+            return getApiCelsius(currentCity);
+        }
+    })
+
+};
+switchUnits();
