@@ -16,11 +16,6 @@ let fahrenheit = true;
 // Initially set currentCity to London
 let currentCity = 'London';
 
-// TODO Dynamic weather logo 
-// TODO next to the city write the state or country?
-// Get time of day so you know if it is a day or night icon
-
-
 // Initially load London's weather
 function initialLoad() {
     // Set Fahrenheit button to active

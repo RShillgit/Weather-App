@@ -193,20 +193,11 @@ async function renderLogo(apiResponse) {
     militarySunset = Number(militarySunset)
 
     // Time is before sunrise
-    if (militaryTimeOfDay < militarySunrise ) {
-        dayTime = false;
-        console.log('Night Time')
-    }
+    if (militaryTimeOfDay < militarySunrise ) {dayTime = false;}
     // Time is after sunset
-    else if (militaryTimeOfDay > militarySunset) {
-        dayTime = false;
-        console.log('Night Time')
-    }
+    else if (militaryTimeOfDay > militarySunset) {dayTime = false;}
     // Day Time
-    else {
-        dayTime = true;
-        console.log('Day Time')
-    };
+    else {dayTime = true;};
 
     // Array that holds description and the DAY TIME image associated
     let weatherConditionsDay = [
