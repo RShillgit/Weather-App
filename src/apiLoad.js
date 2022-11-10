@@ -1,5 +1,5 @@
 import loadMain from './dom.js';
-import { loadOther } from './dom.js';
+import { loadOther, renderLogo } from './dom.js';
 
 export default function getApiFahrenheit(location) {
 
@@ -21,7 +21,7 @@ export default function getApiFahrenheit(location) {
             return
         }
         else {
-            return loadMain(response), loadOther(response, unit);
+            return (loadMain(response), loadOther(response, unit), renderLogo(response));
         }
     })
 };

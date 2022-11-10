@@ -17,14 +17,16 @@ let fahrenheit = true;
 let currentCity = 'London';
 
 // TODO Dynamic weather logo 
-// TODO SVG icons
+// TODO next to the city write the state or country?
+// Get time of day so you know if it is a day or night icon
+
 
 // Initially load London's weather
 function initialLoad() {
     // Set Fahrenheit button to active
     fBtn.classList.toggle('active');
-    return getApiFahrenheit(currentCity);
-}
+    return getApiFahrenheit(currentCity);  
+};
 initialLoad();
 
 function getWeather() {
@@ -43,11 +45,13 @@ function getWeather() {
             // City the user requested
             const requestedCity = cityInput.value;
 
-            const searchForCity = await getApiFahrenheit(requestedCity);
+            await getApiFahrenheit(requestedCity);
 
             // Change current city
             currentCity = requestedCity;
+
         }
+
     });
 };
 getWeather();
