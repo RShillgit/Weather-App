@@ -62,7 +62,7 @@ body {
     border: 2px solid rgba(0, 0, 0, 0.4);
 }
 .weatherInput {
-    height: 40%;
+    height: auto;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -110,7 +110,7 @@ body {
     align-items: center;
 }
 .importantInfo {
-    height: 50%;
+    height: auto;
 }
 .importantInfo p, .otherInfo p {
     margin: 1rem;
@@ -120,4 +120,7 @@ body {
     font-size: xx-large;
     margin-top: 1rem;
     margin-bottom: 1rem;
+}
+.otherInfo {
+    height: auto;
 }

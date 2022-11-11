@@ -1,4 +1,4 @@
-import { convertTime, convertTime2 } from "./helpers";
+import { convertTime} from "./helpers";
 import tempSVG from './images/temp.svg';
 import humiditySVG from './images/humidity.svg';
 import pressureSVG from './images/air-pressure.svg';
@@ -112,7 +112,7 @@ async function loadOther(response, unit) {
     const sunriseImage = document.createElement('img');
     sunriseImage.src = sunriseSVG;
     const sunriseText = document.createElement('p');
-    const sunriseTime = await convertTime(response.sys.sunrise, response.coord.lat, response.coord.lon);
+    const sunriseTime = await convertTime(response.sys.sunrise, response.coord.lat, response.coord.lon, 'regular');
     sunriseText.innerHTML = `${sunriseTime}AM`;
     sunriseDiv.appendChild(sunriseImage);
     sunriseDiv.appendChild(sunriseText);
@@ -122,7 +122,7 @@ async function loadOther(response, unit) {
     const sunsetImage = document.createElement('img');
     sunsetImage.src = sunsetSVG;
     const sunsetText = document.createElement('p');
-    const sunsetTime = await convertTime(response.sys.sunset, response.coord.lat, response.coord.lon);
+    const sunsetTime = await convertTime(response.sys.sunset, response.coord.lat, response.coord.lon, 'regular');
     sunsetText.innerHTML = `${sunsetTime}PM`;
     sunsetDiv.appendChild(sunsetImage);
     sunsetDiv.appendChild(sunsetText);
@@ -178,9 +178,9 @@ async function renderLogo(apiResponse) {
     let logo;
 
     // Get day time, sunrise, and sunset in military time
-    let militaryTimeOfDay = await convertTime2(apiResponse.dt, apiResponse.coord.lat, apiResponse.coord.lon);
-    let militarySunrise = await convertTime2(apiResponse.sys.sunrise, apiResponse.coord.lat, apiResponse.coord.lon);
-    let militarySunset = await convertTime2(apiResponse.sys.sunset, apiResponse.coord.lat, apiResponse.coord.lon);
+    let militaryTimeOfDay = await convertTime(apiResponse.dt, apiResponse.coord.lat, apiResponse.coord.lon, 'military');
+    let militarySunrise = await convertTime(apiResponse.sys.sunrise, apiResponse.coord.lat, apiResponse.coord.lon, 'military');
+    let militarySunset = await convertTime(apiResponse.sys.sunset, apiResponse.coord.lat, apiResponse.coord.lon, 'military');
     
     // Remove colon separating hours and minutes
     militaryTimeOfDay = militaryTimeOfDay.replace(':', '');
